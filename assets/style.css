@@ -15,3 +15,16 @@ nav {
 nav span a {
     color: red;
 }
+
+.quizIntro {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.startBtn {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
