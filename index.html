@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/index.css" />
 </head>
 <body>
     <nav>
          <a href="highscores.html">View high scores</a>
-         <p id = "seconds-left"></p>
+         <p id = "secondsLeft"></p>
     </nav>
-    <div class = "quizIntro">
+    <div class = "quiz">
         <h1><strong>Coding Challenge quiz!</strong></h1>
         <p>This is a timed quiz related to coding questions.<br>
         Each question answered right will add to the final<br>
         score. All questions must be answered before the timer<br>
         reaches zero. For every wrong answer, ten second will <br>
-        be substracted from the timer.
+        be subtracted from the timer.
         </p>
     </div>
-    <div class = "startBtn">
-        <button id ="start-button">Start Quiz</button>
+    <div class = "start-button">
+        <button id ="startButton">Start Quiz</button>
     </div>
+    <div class = "questionButtons">
+    </div>
+    <script src="./assets/index.js"></script>
 </body>
 </html>

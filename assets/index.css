@@ -16,26 +16,32 @@ nav span a {
     color: red;
 }
 
-.quizIntro {
+.quiz {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-.startBtn {
+.start-button {
     height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#start-button {
+#startButton {
     font-size: 20px;
     width: 100px;
     color: white;
     background-color: black;
 }
 
-#start-button:hover {
+#startButton:hover {
     cursor: pointer;
 }
+
+.questionButtons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
