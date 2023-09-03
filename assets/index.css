@@ -45,3 +45,11 @@ nav span a {
     justify-content: space-evenly;
 }
 
+.answerData {
+    height: 300px;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
