@@ -230,75 +230,34 @@ function nextQuestion3() {
                 answerStatus.setAttribute("style", "color: green")
                 answerStatus.textContent = "Right answer!"
                 finalScore += 20;
-                nextQuestion4();
+                highScoreInput();
                 return;
             } else {
                 answerStatus.setAttribute("style", "color: red")
                 answerStatus.textContent = "Wrong answer!";
-                nextQuestion4();
+                highScoreInput();
                 return;
             }
         });
 }
 
-function nextQuestion4() {
-
-    quiz.innerHTML = "<h1>In order to repeat code for x members of an array, what operation do we use?</h1>";
-    questionBtn.innerHTML = "";
-
-    var button = document.createElement("button");
-    button.textContent = "A conditional";
-    questionBtn.appendChild(button);
-    button.setAttribute("style", "background-color: black; color: white; font-size: 20px; width: 100px;")
-
-    var button2 = document.createElement("button");
-    button2.textContent = "A function";
-    questionBtn.appendChild(button2);
-    button2.setAttribute("style", "background-color: black; color: white; font-size: 20px; width: 100px;")
-
-    var button3 = document.createElement("button");
-    button3.textContent = "A declaration block";
-    questionBtn.appendChild(button3);
-    button3.setAttribute("style", "background-color: black; color: white; font-size: 20px; width: 100px;")
-
-    var button4 = document.createElement("button");
-    button4.textContent = "A for loop";
-    questionBtn.appendChild(button4);
-    button4.setAttribute("style", "background-color: black; color: white; font-size: 20px; width: 100px;")
-
-
-    var idx = 3;
-    var btns = document.querySelectorAll("button")
-    for (let i = 0; i < btns.length; i++)
-        btns[i].addEventListener('click', e => {
-            if (i === idx) {
-                answerStatus.setAttribute("style", "color: green")
-                answerStatus.textContent = "Right answer!"
-                highScoreInput();
-                return;
-            } else {
-                answerStatus.setAttribute("style", "color: red")
-                answerStatus.textContent = "Wrong answer!";
-                highScoreInput();
-                return;
-            }
-        })
-}
 
 
 function highScoreInput() {
 
-    quiz.innerHTML = "<h1>All done!</h1><p> Your final score is " + finalScore + "</p>"; 
-    questionBtn.innerHTML = "<form><label>Enter initials: <input type = text><br><button>Submit</button></form>";
-    
+    quiz.innerHTML = "<h1>All done!</h1><p> Your final score is " + finalScore + "</p>";
+    questionBtn.innerHTML = "<form><label for = submit>Enter initials: <input type = text id = submit><br><button>Submit</button></form>";
+
     if (finalScore >= 60) {
-    answerStatus.innerHTML = "Great job!";
+        answerStatus.setAttribute("style", "color: green;")
+        answerStatus.innerHTML = "Great job!";
     } else {
-    answerStatus.innerHTML = "You must study some more!";
+        answerStatus.setAttribute("style", "color: red;")
+        answerStatus.innerHTML = "You must study some more!";
     }
 
 
-    
+
 
 }
 
