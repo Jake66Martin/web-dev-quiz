@@ -16,6 +16,8 @@ var finalScore = 0;
 
 var secondsLeft = 75;
 
+var scoreList = []
+
 
 function timer() {
 
@@ -293,11 +295,13 @@ function highScoreInput() {
 
     lastBtn.addEventListener("click", function(event) {
         event.preventDefault();
-        var finalInformation = {
+            var finalInformation = {
             initials: initial.value,
             score: finalScore
             };
-        localStorage.setItem("finalInformation", JSON.stringify(finalInformation));
+        
+        scoreList.push(finalInformation)
+        localStorage.setItem("finalInformation", JSON.stringify(scoreList));
         window.location.href = 'highscores.html';
 
        })    
