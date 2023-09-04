@@ -17,15 +17,15 @@ var secondsLeft = 75;
 
 function timer() {
 
-    var timerInterval = setInterval(function() {
+        timerInterval = setInterval(function() {
         secondsLeft--;
         seconds.textContent = "Time: " + secondsLeft;
     
         if(secondsLeft === 0) {
-          // Stops execution of action at set interval
-          clearInterval(timerInterval);
-          // Calls function to create and append image
-          sendMessage();
+        clearInterval(timerInterval)
+         quiz.innerHTML = "<h1>You have ran out of time.</h1>"
+        questionBtn.innerHTML = "";
+        answerStatus.innerHTML = "";
         }
     
       }, 1000);
@@ -250,12 +250,18 @@ function nextQuestion3() {
     for (let i = 0; i < btns.length; i++)
         btns[i].addEventListener('click', e => {
             if (i === idx) {
+                
+                clearInterval(timerInterval)
+                seconds.innerHTML = ""
                 answerStatus.setAttribute("style", "color: green")
                 answerStatus.textContent = "Right answer!"
                 finalScore += 20;
                 highScoreInput();
                 return;
             } else {
+                
+                clearInterval(timerInterval)
+                seconds.innerHTML = "";
                 answerStatus.setAttribute("style", "color: red")
                 answerStatus.textContent = "Wrong answer!";
                 highScoreInput();
@@ -268,9 +274,11 @@ function nextQuestion3() {
 
 function highScoreInput() {
 
+    var initial = document.querySelector("#submit")
+    var lastBtn = document.querySelector("#submitScore")
+
     quiz.innerHTML = "<h1>All done!</h1><p> Your final score is " + finalScore + "</p>";
     questionBtn.innerHTML = "<form><label for = submit>Enter initials: <input type = text id = submit><br><button id = submitScore>Submit</button></form>";
-
     
 
     if (finalScore >= 60) {
@@ -281,9 +289,6 @@ function highScoreInput() {
         answerStatus.innerHTML = "You must study some more!";
     }
 
-    var initial = document.querySelector("#submit")
-    var lastBtn = document.querySelector("#submitScore")
-
     var finalInformation = {
     initials: initial.value.trim(),
     score: finalScore
@@ -292,7 +297,7 @@ function highScoreInput() {
     lastBtn.addEventListener("click", function(event) {
         event.preventDefault();
         localStorage.setItem("finalInformation", JSON.stringify(finalInformation));
-        // console.log(initial.value)
+        
     })
 
 
