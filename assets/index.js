@@ -10,6 +10,8 @@ var questionBtn = document.querySelector(".questionButtons");
 
 var answerStatus = document.querySelector(".answerData");
 
+var highScoreList = document.querySelector(".highScoreItems")
+
 var finalScore = 0;
 
 var secondsLeft = 75;
@@ -296,8 +298,11 @@ function highScoreInput() {
             score: finalScore
             };
         localStorage.setItem("finalInformation", JSON.stringify(finalInformation));
-        console.log(initial.value);
-    })
+        window.location.href = 'highscores.html';
+
+       })    
+        
+   
 
 
 
