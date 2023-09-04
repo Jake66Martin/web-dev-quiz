@@ -3,22 +3,19 @@ var highScoreList = document.querySelector(".highScoreItems")
 
 
 
+function renderScore() {
 
-function renderScores() {
-
+    var scores = JSON.parse(localStorage.getItem("finalInformation"));
     
-}
+    for (i = 0; i < scores.length; i++) {
+    var nameScore = document.createElement("li")
+    nameScore.textContent = scores[i].initials + " - " + scores[i].score;
+    highScoreList.appendChild(nameScore)
+    }
 
-
-function init() {
-
-    scores = JSON.parse(localStorage.getItem("finalInformation"));
-    highScoreList.innerHTML = scores.initials + " - " + scores.score;
-    
    
-   renderScores();
 
     
 }
 
-init()
+renderScore();
