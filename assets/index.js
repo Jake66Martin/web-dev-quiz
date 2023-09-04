@@ -12,6 +12,25 @@ var answerStatus = document.querySelector(".answerData");
 
 var finalScore = 0;
 
+var secondsLeft = 75;
+
+
+function timer() {
+
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        seconds.textContent = "Time: " + secondsLeft;
+    
+        if(secondsLeft === 0) {
+          // Stops execution of action at set interval
+          clearInterval(timerInterval);
+          // Calls function to create and append image
+          sendMessage();
+        }
+    
+      }, 1000);
+
+}
 
 function startGame() {
 
@@ -51,6 +70,7 @@ function startGame() {
             } else {
                 answerStatus.setAttribute("style", "color: red")
                 answerStatus.textContent = "Wrong answer!";
+                secondsLeft -= 10;
                 nextQuestion();
                 return;
             }
@@ -97,6 +117,7 @@ function nextQuestion() {
             } else {
                 answerStatus.setAttribute("style", "color: red")
                 answerStatus.textContent = "Wrong answer!";
+                secondsLeft -= 10;
                 nextQuestion1();
                 return;
             }
@@ -143,6 +164,7 @@ function nextQuestion1() {
             } else {
                 answerStatus.setAttribute("style", "color: red")
                 answerStatus.textContent = "Wrong answer!";
+                secondsLeft -= 10;
                 nextQuestion2();
                 return;
             }
@@ -189,6 +211,7 @@ function nextQuestion2() {
             } else {
                 answerStatus.setAttribute("style", "color: red")
                 answerStatus.textContent = "Wrong answer!";
+                secondsLeft -= 10;
                 nextQuestion3();
                 return;
             }
@@ -246,7 +269,9 @@ function nextQuestion3() {
 function highScoreInput() {
 
     quiz.innerHTML = "<h1>All done!</h1><p> Your final score is " + finalScore + "</p>";
-    questionBtn.innerHTML = "<form><label for = submit>Enter initials: <input type = text id = submit><br><button>Submit</button></form>";
+    questionBtn.innerHTML = "<form><label for = submit>Enter initials: <input type = text id = submit><br><button id = submitScore>Submit</button></form>";
+
+    
 
     if (finalScore >= 60) {
         answerStatus.setAttribute("style", "color: green;")
@@ -256,6 +281,19 @@ function highScoreInput() {
         answerStatus.innerHTML = "You must study some more!";
     }
 
+    var initial = document.querySelector("#submit")
+    var lastBtn = document.querySelector("#submitScore")
+
+    var finalInformation = {
+    initials: initial.value.trim(),
+    score: finalScore
+    };
+    
+    lastBtn.addEventListener("click", function(event) {
+        event.preventDefault();
+        localStorage.setItem("finalInformation", JSON.stringify(finalInformation));
+        // console.log(initial.value)
+    })
 
 
 
@@ -275,4 +313,7 @@ function highScoreInput() {
 
 
 
-start.addEventListener("click", startGame);
+
+
+    start.addEventListener("click", startGame);
+    start.addEventListener("click", timer);
