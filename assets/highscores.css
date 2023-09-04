@@ -1,0 +1,22 @@
+.div1 {
+    display: flex;
+    justify-content: center;
+}
+
+.div2 {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.div3 {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.hsButton {
+    font-size: 20px;
+    width: 100px;
+    color: white;
+    background-color: black;
+}
